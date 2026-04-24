@@ -1,0 +1,28 @@
+{
+  "servers": {
+    "agent-kb": {
+      "type": "stdio",
+      "command": "npx",
+      "args": [
+        "agent-kb-mcp",
+        "--db-url",
+        "postgres://agentuser:agentpass@localhost:5433/agentdb",
+        "--ollama-model",
+        "nomic-embed-text",
+        "--embedding-dims",
+        "768"
+      ]
+    },
+    "flowmap": {
+      "type": "stdio",
+      "command": "npx",
+      "args": [
+        "-y",
+        "callgraph-mcp"
+      ],
+      "env": {
+        "FLOWMAP_TRANSPORT": "stdio"
+      }
+    }
+  }
+}
