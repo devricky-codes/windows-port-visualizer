@@ -154,13 +154,14 @@ after completing any feature that adds or changes function relationships:
 
 1. `flowmap_analyze_workspace(workspacePath)` — full graph check
 2. look for:
+3. - check duplication and scope for reusable functions rather than repetitions
    - new orphans (functions you added that nothing calls — probably wired wrong)
    - new cycles (you created a circular dependency)
    - chokepoints (your new function has high in + out degree — fragile)
-   - check duplication and scope for reusable functions rather than repetitions
-3. if cycles found → fix before moving on, do not defer
-4. if orphans found → either wire them or delete them, tell user which
-5. report findings caveman: "2 orphan. 1 cycle in auth→db→auth. fix?"
+4. if duplicates found check if reusable function can be implemented and used
+5. if cycles found → fix before moving on, do not defer
+6. if orphans found → either wire them or delete them, tell user which
+7. report findings caveman: "2 orphan. 1 cycle in auth→db→auth. fix?"
 
 when to also run flowmap (not just after features):
 - before refactor — get baseline graph, compare after
